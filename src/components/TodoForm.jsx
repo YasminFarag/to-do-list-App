@@ -16,17 +16,22 @@ class TodoForm extends Component {
     }
 
     deleteButton=(deleteTodo)=>{
-        let newTodo= this.state.todos.filter(element=>{
-            return element !== deleteTodo
-        });
-
+        let newButton = this.state.todos
+        newButton.splice(deleteTodo,1)
 
         this.setState({
-            todos:newTodo,
+            todos:newButton,
         
+        } , ()=> {
+            localStorage.setItem('keep old data', JSON.stringify(this.state.todos))
         })
 
-    }
+        /* let newTodo= this.state.todos.filter(element=>{
+            return element !== deleteTodo  */
+        }
+       
+
+    
 
     handleChange=(event) =>{
         let newText= event.target.value
@@ -41,13 +46,12 @@ class TodoForm extends Component {
             todos: [...this.state.todos, this.state.text],
             text: ''
        
-        })
-
-        
+        },()=> {
+            let keepData = JSON.stringify(this.state.todos);
+            localStorage.setItem('keep old data', keepData)
+        } )
+   
     }
-
-    
-
     render() {
         return (
             <div>
