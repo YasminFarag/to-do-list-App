@@ -3,9 +3,16 @@ import Result from './Result';
 
 
 class TodoForm extends Component {
-    state={
-        text: '',
-        todos: []
+    
+    constructor(props){
+        super(props)
+        let initData = JSON.parse (localStorage.getItem('keep old data'))
+
+
+        this.state={
+            text: '',
+            todos: initData
+        }
     }
 
     deleteButton=(deleteTodo)=>{
