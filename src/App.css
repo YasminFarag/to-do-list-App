@@ -1,6 +1,13 @@
+
+body {
+
+  background-color: #cccccc;
+
+
+}
+
 .App{
   text-align: center;
-  background-color: #cccccc;
 }
 
 h1{
